@@ -10,7 +10,7 @@ app.get('/convert/okurigana', async (request, response, next) => {
     await kuroshiro.init(new KuroshiroAnalyzer({ dictPath: 'node_modules/kuromoji/dict' }));
     const text = request.query.text;
     const okurigana = await kuroshiro.convert(text, { to: 'hiragana', mode: 'okurigana' });
-    response.json(okurigana);
+    response.send(okurigana);
   }
   catch (e) {
     next(e);
